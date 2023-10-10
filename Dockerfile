@@ -1,14 +1,14 @@
-# Use a base image with Java pre-installed
-FROM openjdk:11-jre-slim
+# Use OpenJDK 11 as the base image
+FROM openjdk:11-jdk-slim
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the Java source file from the host machine's desktop to the container
-COPY /Users/yaq/Desktop/App/src/App.java /app/
+# Copy the local App.java file into the container
+COPY App.java /app
 
-# Compile the Java source file
+# Compile App.java inside the container
 RUN javac App.java
 
-# Command to run the Java program
+# Run the compiled App class when the container is started
 CMD ["java", "App"]
